@@ -29,10 +29,6 @@ cluster "aws" {
     ssh_pubkeys = [
       var.ssh_pubkey
     ]
-
-    labels = {
-      "arch" = "amd"
-    }
   }
 
   worker_pool "arm" {
@@ -45,10 +41,6 @@ cluster "aws" {
     ssh_pubkeys = [
       var.ssh_pubkey
     ]
-
-    labels = {
-      "arch" = "arm"
-    }
   }
 }
 
@@ -77,12 +69,12 @@ component "prometheus-operator" {
     }
 
     node_selector = {
-      "arch" = "amd"
+      "beta.kubernetes.io/arch" = "amd64"
     }
   }
 
   alertmanager_node_selector = {
-    "arch" = "amd"
+    "beta.kubernetes.io/arch" = "amd64"
   }
 }
 
